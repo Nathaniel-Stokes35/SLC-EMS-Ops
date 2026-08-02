@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "SLC EMS OPS API",
+    "description": "CSE 341 - Group Project: Airports & Helicopters Operations Tracker.",
+    "version": "1.0.0"
+  },
+  "host": "://onrender.com",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/airports/": {
+      "get": {
+        "description": "Retrieve all airports",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "Add a new Utah aviation facility",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/AirportInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/airports/{id}": {
+      "get": {
+        "description": "Retrieve a single airport by its ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "Update an existing airport",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/AirportInput"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove an airport",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AirportInput": {
+      "type": "object",
+      "properties": {
+        "airportName": {
+          "type": "string",
+          "example": "South Valley Regional Airport"
+        },
+        "airportCode": {
+          "type": "string",
+          "example": "U42"
+        },
+        "cityLocation": {
+          "type": "string",
+          "example": "West Jordan"
+        },
+        "helipadsAvailable": {
+          "type": "number",
+          "example": 2
+        },
+        "providesJetFuel": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    }
+  }
+}
