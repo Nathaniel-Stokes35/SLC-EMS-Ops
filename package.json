@@ -1,0 +1,28 @@
+{
+  "name": "slc-ems-ops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nathaniel-Stokes35/SLC-EMS-Ops.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nathaniel-Stokes35/SLC-EMS-Ops/issues"
+  },
+  "homepage": "https://github.com/Nathaniel-Stokes35/SLC-EMS-Ops#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "mongodb": "^7.5.0",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
