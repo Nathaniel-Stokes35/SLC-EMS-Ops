@@ -5,9 +5,8 @@
     "description": "CSE 341 - Group Project: Airports & Helicopters Operations Tracker.",
     "version": "1.0.0"
   },
-  "host": "://onrender.com",
+  "host": "slc-ems-ops.onrender.com",
   "basePath": "/",
-  "tags": [],
   "schemes": [
     "https",
     "http"
