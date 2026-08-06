@@ -1,19 +1,26 @@
+require('dotenv').config(); // Loads environment variables
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongodb = require('./data/database');
 const router = require('./routes/index');
+const mongodb = require('./data/database');
 const session = require('express-session');
 const passport = require('passport');
 const cors = require('cors');
 const GitHubStrategy = require("passport-github2").Strategy;
-const { MongoStore } = require('connect-mongo');
+const { MongoStore } = require('connect-mongo'); // Fixed import layout
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Check if running on Render production vs your local machine
+const isProduction = process.env.NODE_ENV === 'production';
+
 // 2. MIDDLEWARES & PROXY SETTINGS
 app.use(bodyParser.json());
-app.set('trust proxy', 1); // Crucial for keeping you logged in on Render
+
+if (isProduction) {
+  app.set('trust proxy', 1); // Only trust proxy on Render production
+}
 
 // 3. UPDATED SESSION CONFIGURATION
 app.use(session({
@@ -21,51 +28,37 @@ app.use(session({
   resave: false,
   saveUninitialized: false, 
   store: MongoStore.create({
-    // Make sure MONGODB_URI matches the key name in your Render Environment dashboard
     mongoUrl: process.env.MONGODB_URL, 
     collectionName: 'sessions'
   }),
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 1 day
-    secure: true,                // Required for HTTPS on Render
-    sameSite: 'none'             // Allows cross-site cookie sharing for GitHub OAuth
+    // DYNAMIC FIX: Turn off 'secure' on localhost so the login cookie works!
+    secure: isProduction,                
+    // DYNAMIC FIX: Use 'lax' on localhost so the browser doesn't block the cookie
+    sameSite: isProduction ? 'none' : 'lax'             
   }
 }));
-// This is the basic express session({..}) initialization.
-app.use(passport.initialize())
-// init passport on every route call.
-app.use(passport.session())
-// allow passport to use "express-session".
-app.use((req, res, next) => {
-    res. setHeader("Acress-Controll-Allow-Origin", "*"); 
-    res .setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization"
-);
-res.setHeader(
-    "Access-Control-Allow-Methods",
-    "POST, GET, PUT, PATCH, OPTIONS, DELETE"
-    );
-next ();
-})
+
+// 4. PASSPORT INITIALIZATION
+app.use(passport.initialize());
+app.use(passport.session());
+
+// 5. CORS CONFIGURATION
 app.use(cors({
-  origin: 'https://onrender.com', // Explicitly allow your domain
-  methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],  // Allowed methods (Note: "UPDATE" is not a real HTTP method)
-  credentials: true                                    // CRITICAL: Allows session cookies to pass through
+  origin: isProduction ? 'https://cse341-project2-dj7y.onrender.com' : 'http://localhost:3000',
+  methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],  
+  credentials: true                                    
 }));
 
-app.use("/", require("./routes/index.js"));
-
-
+// 6. PASSPORT STRATEGY SETTINGS
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID, 
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.CALLBACK_URL
 },
-function(accessToken, refreshtoken, profile, done) {
-    //User. findorCreate( githubId: profile.id }, function (err, user) {
-        return done (null, profile);
-    //});
+function(accessToken, refreshToken, profile, done) {
+    return done(null, profile);
 }
 ));
 
@@ -76,21 +69,10 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.get("/", (req, res) => {
-  res.send(
-    req.session.user !== undefined
-      ? `Logged in as ${req.session.user.displayName}`
-      : "Logged Out"
-  );
-});
+// 7. MOUNT MAIN ROUTER (Cleans up route conflicts)
+app.use("/", require("./routes/index.js"));
 
-app.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/api-docs', session: false}), 
-  (req, res) => {
-  req.session.user = req.user;
-  res.redirect('/');
-});
-
+// 8. DATABASE & SERVER START
 mongodb.initDb((err) => {
   if (err) {
     console.log(err);
