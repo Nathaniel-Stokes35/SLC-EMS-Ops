@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // GET: Retrieve all airports
 const getAllAirports = async (req, res) => {
+  // #swagger.tags = ['Airports']
   try {
     const lists = await mongodb.getDatabase().db().collection('airports').find().toArray();
     
@@ -19,6 +20,7 @@ const getAllAirports = async (req, res) => {
 
 // POST: Add a new Utah aviation facility
 const createAirport = async (req, res) => {
+  // #swagger.tags = ['Airports']
   try {
     // Validate that incoming body data exists
     if (!req.body.airportName || !req.body.airportCode) {
@@ -47,6 +49,7 @@ const createAirport = async (req, res) => {
 
 // GET: Retrieve a single airport by its ID
 const getSingleAirport = async (req, res) => {
+  // #swagger.tags = ['Airports']
   try {
     // Invalid IDs are a user input error, which means a 400 Bad Request status code
     if (!ObjectId.isValid(req.params.id)) {
@@ -74,6 +77,7 @@ const getSingleAirport = async (req, res) => {
 
 // PUT: Update an existing airport
 const updateAirport = async (req, res) => {
+  // #swagger.tags = ['Airports']
   try {
     // Invalid IDs mean a 400 Bad Request status code
     if (!ObjectId.isValid(req.params.id)) {
@@ -103,6 +107,7 @@ const updateAirport = async (req, res) => {
 
 // DELETE: Remove an airport
 const deleteAirport = async (req, res) => {
+  // #swagger.tags = ['Airports']
   try {
     // Invalid IDs mean a 400 Bad Request status code
     if (!ObjectId.isValid(req.params.id)) {

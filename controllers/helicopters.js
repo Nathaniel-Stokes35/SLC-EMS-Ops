@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // GET: Retrieve all fleet helicopters
 const getAllHelicopters = async (req, res) => {
+    // #swagger.tags = ['Helicopters']  
   try {
     const lists = await mongodb.getDatabase().db().collection('helicopters').find().toArray();
     
@@ -19,6 +20,7 @@ const getAllHelicopters = async (req, res) => {
 
 // POST: Insert a new fleet helicopter (Now with 8 fields!)
 const createHelicopter = async (req, res) => {
+    // #swagger.tags = ['Helicopters']
   try {
     // Validate that critical required fields are present in the request payload
     if (!req.body.tailNumber || !req.body.modelName || !req.body.assignedAirportId) {
@@ -44,6 +46,7 @@ const createHelicopter = async (req, res) => {
     const response = await mongodb.getDatabase().db().collection('helicopters').insertOne(helicopter);
     
     if (response.acknowledged) {
+      // #swagger.tags = ['Helicopters']
       res.status(201).json(response);
     } else {
       res.status(500).json({ message: 'Some error occurred while adding the helicopter.' });
@@ -55,6 +58,7 @@ const createHelicopter = async (req, res) => {
 
 // GET: Retrieve a single helicopter by its ID
 const getSingleHelicopter = async (req, res) => {
+    // #swagger.tags = ['Helicopters']
   try {
     // Invalid IDs are a user input error, returning a 400 Bad Request
     if (!ObjectId.isValid(req.params.id)) {
@@ -82,6 +86,7 @@ const getSingleHelicopter = async (req, res) => {
 
 // PUT: Update an existing helicopter (Enforcing all 8 fields)
 const updateHelicopter = async (req, res) => {
+    // #swagger.tags = ['Helicopters']
   try {
     // Invalid main IDs mean a 400 Bad Request
     if (!ObjectId.isValid(req.params.id)) {
@@ -119,6 +124,7 @@ const updateHelicopter = async (req, res) => {
 
 // DELETE: Remove a helicopter
 const deleteHelicopter = async (req, res) => {
+    // #swagger.tags = ['Helicopters']
   try {
     // Invalid IDs mean a 400 Bad Request
     if (!ObjectId.isValid(req.params.id)) {

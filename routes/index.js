@@ -19,7 +19,6 @@ router.use('/helicopters', require('./helicopters'));
 // --- Authentication & Identity Flows ---
 router.get("/login", passport.authenticate("github"), (req, res) => {});
 
-// #swagger.ignore = true
 router.get("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) {
@@ -30,7 +29,6 @@ router.get("/logout", function (req, res, next) {
 });
 
 // HOME ROUTE: Dynamic login landing status check
-// #swagger.ignore = true
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
     res.send(`Logged In as ${req.user.displayName || req.user.username}`);
@@ -40,7 +38,6 @@ router.get('/', (req, res) => {
 });
 
 // CALLBACK ROUTE: Processes the code GitHub OAuth returns
-// #swagger.ignore = true
 router.get('/auth/github/callback', 
   passport.authenticate('github', { 
     failureRedirect: '/api-docs', 

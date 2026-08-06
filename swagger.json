@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "SLC EMS OPS API",
-    "description": "CSE 341 - Group Project: Airports & Helicopters Operations Tracker.",
+    "title": "SLC-EMS-OPS API",
+    "description": "CSE 341 - Final Project.",
     "version": "1.0.0"
   },
-  "host": "slc-ems-ops.onrender.com",
+  "host": "https://slc-ems-ops.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",
@@ -14,34 +14,81 @@
   "paths": {
     "/airports/": {
       "get": {
-        "description": "Retrieve all airports",
+        "tags": [
+          "Airports"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "description": "Add a new Utah aviation facility",
+        "tags": [
+          "Airports"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/AirportInput"
+              "type": "object",
+              "properties": {
+                "airportName": {
+                  "example": "any"
+                },
+                "airportCode": {
+                  "example": "any"
+                },
+                "cityLocation": {
+                  "example": "any"
+                },
+                "helipadsAvailable": {
+                  "example": "any"
+                },
+                "providesJetFuel": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/airports/{id}": {
       "get": {
-        "description": "Retrieve a single airport by its ID",
+        "tags": [
+          "Airports"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -53,11 +100,23 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "description": "Update an existing airport",
+        "tags": [
+          "Airports"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -69,18 +128,50 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/AirportInput"
+              "type": "object",
+              "properties": {
+                "airportName": {
+                  "example": "any"
+                },
+                "airportCode": {
+                  "example": "any"
+                },
+                "cityLocation": {
+                  "example": "any"
+                },
+                "helipadsAvailable": {
+                  "example": "any"
+                },
+                "providesJetFuel": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "description": "Remove an airport",
+        "tags": [
+          "Airports"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -92,6 +183,217 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/helicopters/": {
+      "get": {
+        "tags": [
+          "Helicopters"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Helicopters"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tailNumber": {
+                  "example": "any"
+                },
+                "modelName": {
+                  "example": "any"
+                },
+                "assignedAirportId": {
+                  "example": "any"
+                },
+                "manufacturer": {
+                  "example": "any"
+                },
+                "yearManufactured": {
+                  "example": "any"
+                },
+                "useType": {
+                  "example": "any"
+                },
+                "passengerCapacity": {
+                  "example": "any"
+                },
+                "maxRangeNauticalMiles": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/helicopters/{id}": {
+      "get": {
+        "tags": [
+          "Helicopters"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Helicopters"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "assignedAirportId": {
+                  "example": "any"
+                },
+                "tailNumber": {
+                  "example": "any"
+                },
+                "modelName": {
+                  "example": "any"
+                },
+                "manufacturer": {
+                  "example": "any"
+                },
+                "yearManufactured": {
+                  "example": "any"
+                },
+                "useType": {
+                  "example": "any"
+                },
+                "passengerCapacity": {
+                  "example": "any"
+                },
+                "maxRangeNauticalMiles": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Helicopters"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -120,6 +422,43 @@
         "providesJetFuel": {
           "type": "boolean",
           "example": true
+        }
+      }
+    },
+    "HelicopterInput": {
+      "type": "object",
+      "properties": {
+        "tailNumber": {
+          "type": "string",
+          "example": "N123UT"
+        },
+        "modelName": {
+          "type": "string",
+          "example": "AS350 B3"
+        },
+        "manufacturer": {
+          "type": "string",
+          "example": "Airbus Helicopters"
+        },
+        "yearManufactured": {
+          "type": "number",
+          "example": 2022
+        },
+        "useType": {
+          "type": "string",
+          "example": "Air Ambulance"
+        },
+        "passengerCapacity": {
+          "type": "number",
+          "example": 5
+        },
+        "maxRangeNauticalMiles": {
+          "type": "number",
+          "example": 350
+        },
+        "assignedAirportId": {
+          "type": "string",
+          "example": "652f4c9c1b3d5e001f8a2b3c"
         }
       }
     }

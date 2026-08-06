@@ -5,7 +5,7 @@ const doc = {
     title: 'slc-ems-ops API',
     description: 'CSE 341 - Final Project.'
   },
-  host: 'cse341-project2-dj7y.onrender.com',
+  host: 'localhost:3000',
   schemes: ['https', 'http'],
   definitions: {
     AirportInput: {

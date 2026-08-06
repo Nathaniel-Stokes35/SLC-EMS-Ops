@@ -20,7 +20,7 @@
     "url": "https://github.com/Nathaniel-Stokes35/SLC-EMS-Ops/issues"
   },
   "homepage": "https://github.com/Nathaniel-Stokes35/SLC-EMS-Ops#readme",
-    "dependencies": {
+  "dependencies": {
     "connect-mongo": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
