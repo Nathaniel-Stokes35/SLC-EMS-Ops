@@ -47,7 +47,58 @@ const saveHelicopter = (req, res, next) => {
   });
 };
 
+const saveWeather = (req, res, next) => {
+  const validationRules = {
+    stationId: 'required|string|min:3|max:4',
+    timestamp: 'string', // Optional date string format
+    temperatureCelsius: 'numeric',
+    windSpeedKnots: 'required|integer|min:0',
+    windDirectionDegrees: 'required|integer|min:0|max:360',
+    visibilityMiles: 'required|numeric|min:0',
+    flightCategory: 'required|string|in:VFR,IFR,MVFR,LIFR',
+    rawMetar: 'string'
+  };
+
+  validator(req.body, validationRules, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const savePilot = (req, res, next) => {
+  const validationRules = {
+    employeeId: 'required|string',
+    firstName: 'required|string',
+    lastName: 'required|string',
+    status: 'required|string|in:On Duty,Off Duty,On Leave,Suspended',
+    certifications: 'required|array',
+    medicalClassExpiration: 'required|string', // Date string format
+    totalFlightHours: 'required|integer|min:0'
+  };
+
+  validator(req.body, validationRules, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 module.exports = {
   saveAirport,
-  saveHelicopter
+  saveHelicopter,
+  saveWeather,
+  savePilot
 };
