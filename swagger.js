@@ -8,14 +8,6 @@ const doc = {
     description: 'CSE 341 - Final Project.'
   },
 
-  host: isProduction
-    ? 'slc-ems-ops.onrender.com'
-    : `localhost:${process.env.PORT || 3000}`,
-
-  schemes: isProduction
-    ? ['https']
-    : ['http'],
-
   definitions: {
     AirportInput: {
       airportName: "South Valley Regional Airport",
