@@ -15,6 +15,8 @@ router.get('/api-docs', swaggerUi.setup(swaggerDocument, {
 // --- Mount Separated Resource Sub-Routers ---
 router.use('/airports', require('./airports'));
 router.use('/helicopters', require('./helicopters'));
+router.use('/weather', require('./weather'));
+router.use('/pilots', require('./pilots'));
 
 // --- Authentication & Identity Flows ---
 router.get("/login", passport.authenticate("github"), (req, res) => {});

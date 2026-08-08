@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "SLC-EMS-OPS API",
+    "title": "SLC-EMS-Ops API",
     "description": "CSE 341 - Final Project.",
     "version": "1.0.0"
   },
-  "host": "slc-ems-ops.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "https",
@@ -397,6 +397,404 @@
           }
         }
       }
+    },
+    "/weather/": {
+      "get": {
+        "tags": [
+          "Weather"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Weather"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "stationId": {
+                  "example": "any"
+                },
+                "flightCategory": {
+                  "example": "any"
+                },
+                "timestamp": {
+                  "example": "any"
+                },
+                "temperatureCelsius": {
+                  "example": "any"
+                },
+                "windSpeedKnots": {
+                  "example": "any"
+                },
+                "windDirectionDegrees": {
+                  "example": "any"
+                },
+                "visibilityMiles": {
+                  "example": "any"
+                },
+                "rawMetar": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/weather/{id}": {
+      "get": {
+        "tags": [
+          "Weather"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Weather"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "stationId": {
+                  "example": "any"
+                },
+                "timestamp": {
+                  "example": "any"
+                },
+                "temperatureCelsius": {
+                  "example": "any"
+                },
+                "windSpeedKnots": {
+                  "example": "any"
+                },
+                "windDirectionDegrees": {
+                  "example": "any"
+                },
+                "visibilityMiles": {
+                  "example": "any"
+                },
+                "flightCategory": {
+                  "example": "any"
+                },
+                "rawMetar": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Weather"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pilots/": {
+      "get": {
+        "tags": [
+          "Pilots"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pilots"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "employeeId": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "certifications": {
+                  "example": "any"
+                },
+                "medicalClassExpiration": {
+                  "example": "any"
+                },
+                "totalFlightHours": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pilots/{id}": {
+      "get": {
+        "tags": [
+          "Pilots"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pilots"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "employeeId": {
+                  "example": "any"
+                },
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "certifications": {
+                  "example": "any"
+                },
+                "medicalClassExpiration": {
+                  "example": "any"
+                },
+                "totalFlightHours": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pilots"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -459,6 +857,83 @@
         "assignedAirportId": {
           "type": "string",
           "example": "652f4c9c1b3d5e001f8a2b3c"
+        }
+      }
+    },
+    "WeatherInput": {
+      "type": "object",
+      "properties": {
+        "stationId": {
+          "type": "string",
+          "example": "KSLC"
+        },
+        "timestamp": {
+          "type": "string",
+          "example": "2026-08-07T23:30:00Z"
+        },
+        "temperatureCelsius": {
+          "type": "number",
+          "example": 24.5
+        },
+        "windSpeedKnots": {
+          "type": "number",
+          "example": 12
+        },
+        "windDirectionDegrees": {
+          "type": "number",
+          "example": 180
+        },
+        "visibilityMiles": {
+          "type": "number",
+          "example": 10
+        },
+        "flightCategory": {
+          "type": "string",
+          "example": "VFR"
+        },
+        "rawMetar": {
+          "type": "string",
+          "example": "KSLC 072330Z 18012KT 10SM CLR 25/11 A3002"
+        }
+      }
+    },
+    "PilotInput": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string",
+          "example": "EMP-9402"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "Alex"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Mercer"
+        },
+        "status": {
+          "type": "string",
+          "example": "On Duty"
+        },
+        "certifications": {
+          "type": "array",
+          "example": [
+            "Commercial Pilot",
+            "Instrument Rating",
+            "Rotorcraft-Helicopter"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "medicalClassExpiration": {
+          "type": "string",
+          "example": "2027-04-15"
+        },
+        "totalFlightHours": {
+          "type": "number",
+          "example": 2450
         }
       }
     }
