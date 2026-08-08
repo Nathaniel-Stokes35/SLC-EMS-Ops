@@ -39,25 +39,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Aviation facility details layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "airportName": {
-                  "example": "any"
-                },
-                "airportCode": {
-                  "example": "any"
-                },
-                "cityLocation": {
-                  "example": "any"
-                },
-                "helipadsAvailable": {
-                  "example": "any"
-                },
-                "providesJetFuel": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/AirportInput"
             }
           }
         ],
@@ -70,6 +55,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -124,25 +112,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Aviation facility details layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "airportName": {
-                  "example": "any"
-                },
-                "airportCode": {
-                  "example": "any"
-                },
-                "cityLocation": {
-                  "example": "any"
-                },
-                "helipadsAvailable": {
-                  "example": "any"
-                },
-                "providesJetFuel": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/AirportInput"
             }
           }
         ],
@@ -155,6 +128,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -217,34 +193,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Helicopter air ambulance details layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "tailNumber": {
-                  "example": "any"
-                },
-                "modelName": {
-                  "example": "any"
-                },
-                "assignedAirportId": {
-                  "example": "any"
-                },
-                "manufacturer": {
-                  "example": "any"
-                },
-                "yearManufactured": {
-                  "example": "any"
-                },
-                "useType": {
-                  "example": "any"
-                },
-                "passengerCapacity": {
-                  "example": "any"
-                },
-                "maxRangeNauticalMiles": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/HelicopterInput"
             }
           }
         ],
@@ -257,6 +209,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -311,34 +266,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Helicopter air ambulance details layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "assignedAirportId": {
-                  "example": "any"
-                },
-                "tailNumber": {
-                  "example": "any"
-                },
-                "modelName": {
-                  "example": "any"
-                },
-                "manufacturer": {
-                  "example": "any"
-                },
-                "yearManufactured": {
-                  "example": "any"
-                },
-                "useType": {
-                  "example": "any"
-                },
-                "passengerCapacity": {
-                  "example": "any"
-                },
-                "maxRangeNauticalMiles": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/HelicopterInput"
             }
           }
         ],
@@ -351,6 +282,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -413,37 +347,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Weather report data layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "stationId": {
-                  "example": "any"
-                },
-                "flightCategory": {
-                  "example": "any"
-                },
-                "assignedAirportId": {
-                  "example": "any"
-                },
-                "timestamp": {
-                  "example": "any"
-                },
-                "temperatureCelsius": {
-                  "example": "any"
-                },
-                "windSpeedKnots": {
-                  "example": "any"
-                },
-                "windDirectionDegrees": {
-                  "example": "any"
-                },
-                "visibilityMiles": {
-                  "example": "any"
-                },
-                "rawMetar": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/WeatherInput"
             }
           }
         ],
@@ -513,37 +420,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Weather report data layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "stationId": {
-                  "example": "any"
-                },
-                "assignedAirportId": {
-                  "example": "any"
-                },
-                "timestamp": {
-                  "example": "any"
-                },
-                "temperatureCelsius": {
-                  "example": "any"
-                },
-                "windSpeedKnots": {
-                  "example": "any"
-                },
-                "windDirectionDegrees": {
-                  "example": "any"
-                },
-                "visibilityMiles": {
-                  "example": "any"
-                },
-                "flightCategory": {
-                  "example": "any"
-                },
-                "rawMetar": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/WeatherInput"
             }
           }
         ],
@@ -621,34 +501,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Pilot crew roster schema layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "employeeId": {
-                  "example": "any"
-                },
-                "status": {
-                  "example": "any"
-                },
-                "certifications": {
-                  "example": "any"
-                },
-                "medicalClassExpiration": {
-                  "example": "any"
-                },
-                "totalFlightHours": {
-                  "example": "any"
-                },
-                "assignedHelicopterId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/PilotInput"
             }
           }
         ],
@@ -718,31 +574,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Pilot crew roster schema layout.",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "employeeId": {
-                  "example": "any"
-                },
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "status": {
-                  "example": "any"
-                },
-                "certifications": {
-                  "example": "any"
-                },
-                "medicalClassExpiration": {
-                  "example": "any"
-                },
-                "totalFlightHours": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/PilotInput"
             }
           }
         ],

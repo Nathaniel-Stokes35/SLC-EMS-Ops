@@ -21,6 +21,12 @@ const getAllAirports = async (req, res) => {
 // POST: Add a new Utah aviation facility
 const createAirport = async (req, res) => {
   // #swagger.tags = ['Airports']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Aviation facility details layout.',
+      required: true,
+      schema: { $ref: '#/definitions/AirportInput' }
+} */
   try {
     // Validate that incoming body data exists
     if (!req.body.airportName || !req.body.airportCode) {
@@ -78,6 +84,12 @@ const getSingleAirport = async (req, res) => {
 // PUT: Update an existing airport
 const updateAirport = async (req, res) => {
   // #swagger.tags = ['Airports']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Aviation facility details layout.',
+      required: true,
+      schema: { $ref: '#/definitions/AirportInput' }
+} */
   try {
     // Invalid IDs mean a 400 Bad Request status code
     if (!ObjectId.isValid(req.params.id)) {

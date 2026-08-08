@@ -21,6 +21,12 @@ const getAllWeather = async (req, res) => {
 // POST: Add a new weather report
 const createWeather = async (req, res) => {
   // #swagger.tags = ['Weather']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Weather report data layout.',
+      required: true,
+      schema: { $ref: '#/definitions/WeatherInput' }
+} */
   try {
     // Validate that incoming body data exists
     if (!req.body.stationId || !req.body.flightCategory) {
@@ -82,6 +88,12 @@ const getSingleWeather = async (req, res) => {
 // PUT: Update an existing weather report
 const updateWeather = async (req, res) => {
   // #swagger.tags = ['Weather']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Weather report data layout.',
+      required: true,
+      schema: { $ref: '#/definitions/WeatherInput' }
+    } */
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Must use a valid weather id to update a weather report.' });

@@ -21,6 +21,12 @@ const getAllPilots = async (req, res) => {
 // POST: Add a new pilot
 const createPilot = async (req, res) => {
   // #swagger.tags = ['Pilots']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Pilot crew roster schema layout.',
+      required: true,
+      schema: { $ref: '#/definitions/PilotInput' }
+    } */
   try {
     // Validate that incoming body data exists
     if (!req.body.firstName || !req.body.lastName || !req.body.employeeId) {
@@ -80,6 +86,12 @@ const getSinglePilot = async (req, res) => {
 // PUT: Update an existing pilot
 const updatePilot = async (req, res) => {
   // #swagger.tags = ['Pilots']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Pilot crew roster schema layout.',
+      required: true,
+      schema: { $ref: '#/definitions/PilotInput' }
+} */
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: 'Must use a valid pilot id to update a pilot.' });

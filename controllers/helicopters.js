@@ -21,6 +21,12 @@ const getAllHelicopters = async (req, res) => {
 // POST: Insert a new fleet helicopter (Now with 8 fields!)
 const createHelicopter = async (req, res) => {
     // #swagger.tags = ['Helicopters']
+    /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Helicopter air ambulance details layout.',
+      required: true,
+      schema: { $ref: '#/definitions/HelicopterInput' }
+} */
   try {
     // Validate that critical required fields are present in the request payload
     if (!req.body.tailNumber || !req.body.modelName || !req.body.assignedAirportId) {
@@ -87,6 +93,12 @@ const getSingleHelicopter = async (req, res) => {
 // PUT: Update an existing helicopter (Enforcing all 8 fields)
 const updateHelicopter = async (req, res) => {
     // #swagger.tags = ['Helicopters']
+    /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Helicopter air ambulance details layout.',
+      required: true,
+      schema: { $ref: '#/definitions/HelicopterInput' }
+} */
   try {
     // Invalid main IDs mean a 400 Bad Request
     if (!ObjectId.isValid(req.params.id)) {
