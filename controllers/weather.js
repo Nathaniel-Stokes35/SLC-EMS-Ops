@@ -11,7 +11,7 @@ const getAllWeather = async (req, res) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
     } else {
-      res.status(500).json({ message: 'Some error occurred while retrieving weather reports.' });
+      res.status(500).json({ message: 'There was an error retreving weather information.' });
     }
   } catch (err) {
     res.status(500).json({ message: err.message || 'Internal Server Error while retrieving weather reports.' });

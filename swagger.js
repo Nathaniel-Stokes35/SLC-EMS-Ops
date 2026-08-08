@@ -1,12 +1,21 @@
 const swaggerAutogen = require('swagger-autogen')();
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const doc = {
   info: {
     title: 'SLC-EMS-Ops API',
     description: 'CSE 341 - Final Project.'
   },
-  host: 'slc-ems-ops.onrender.com',
-  schemes: ['https', 'http'],
+
+  host: isProduction
+    ? 'slc-ems-ops.onrender.com'
+    : `localhost:${process.env.PORT || 3000}`,
+
+  schemes: isProduction
+    ? ['https']
+    : ['http'],
+
   definitions: {
     AirportInput: {
       airportName: "South Valley Regional Airport",
@@ -15,6 +24,7 @@ const doc = {
       helipadsAvailable: 2,
       providesJetFuel: true
     },
+
     HelicopterInput: {
       tailNumber: "N123UT",
       modelName: "AS350 B3",
@@ -25,9 +35,10 @@ const doc = {
       maxRangeNauticalMiles: 350,
       assignedAirportId: "652f4c9c1b3d5e001f8a2b3c"
     },
-        WeatherInput: {
+
+    WeatherInput: {
       stationId: "KSLC",
-      assignedAirportId: "652f4c9c1b3d5e001f8a2b3c", // Match your helicopter ID example style
+      assignedAirportId: "652f4c9c1b3d5e001f8a2b3c",
       timestamp: "2026-08-07T23:30:00Z",
       temperatureCelsius: 24.5,
       windSpeedKnots: 12,
@@ -36,15 +47,20 @@ const doc = {
       flightCategory: "VFR",
       rawMetar: "KSLC 072330Z 18012KT 10SM CLR 25/11 A3002"
     },
+
     PilotInput: {
       employeeId: "EMP-9402",
       firstName: "Alex",
       lastName: "Mercer",
       status: "On Duty",
-      certifications: ["Commercial Pilot", "Instrument Rating", "Rotorcraft-Helicopter"],
+      certifications: [
+        "Commercial Pilot",
+        "Instrument Rating",
+        "Rotorcraft-Helicopter"
+      ],
       medicalClassExpiration: "2027-04-15",
       totalFlightHours: 2450,
-      assignedHelicopterId: "652f4c9c1b3d5e001f8a2b3d" // Relational ID placeholder
+      assignedHelicopterId: "652f4c9c1b3d5e001f8a2b3d"
     }
   }
 };
@@ -52,5 +68,4 @@ const doc = {
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
-// This script compiles your routes list and auto-generates swagger.json
 swaggerAutogen(outputFile, endpointsFiles, doc);
