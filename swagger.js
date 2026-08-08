@@ -6,7 +6,7 @@ const doc = {
   info: {
     title: 'SLC-EMS-Ops API',
     description: 'CSE 341 - Final Project.'
-  }
+  },
 
   definitions: {
     AirportInput: {
