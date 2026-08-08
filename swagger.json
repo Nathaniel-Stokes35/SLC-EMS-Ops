@@ -5,7 +5,7 @@
     "description": "CSE 341 - Final Project.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "slc-ems-ops.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",
