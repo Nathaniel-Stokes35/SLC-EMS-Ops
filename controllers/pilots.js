@@ -34,7 +34,8 @@ const createPilot = async (req, res) => {
       status: req.body.status, // e.g., "On Duty", "Off Duty"
       certifications: req.body.certifications, // Array expected
       medicalClassExpiration: req.body.medicalClassExpiration,
-      totalFlightHours: req.body.totalFlightHours
+      totalFlightHours: req.body.totalFlightHours,
+      assignedHelicopterId: req.body.assignedHelicopterId
     };
 
     const response = await mongodb.getDatabase().db().collection('pilots').insertOne(pilot);
@@ -92,7 +93,8 @@ const updatePilot = async (req, res) => {
       status: req.body.status,
       certifications: req.body.certifications,
       medicalClassExpiration: req.body.medicalClassExpiration,
-      totalFlightHours: req.body.totalFlightHours
+      totalFlightHours: req.body.totalFlightHours,
+      assignedHelicopterId: req.body.assignedHelicopterId
     };
 
     const response = await mongodb.getDatabase().db().collection('pilots').replaceOne({ _id: pilotId }, pilot);

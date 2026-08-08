@@ -28,15 +28,17 @@ const createWeather = async (req, res) => {
     }
 
     const weatherReport = {
-      stationId: req.body.stationId,
-      timestamp: req.body.timestamp || new Date().toISOString(),
-      temperatureCelsius: req.body.temperatureCelsius,
-      windSpeedKnots: req.body.windSpeedKnots,
-      windDirectionDegrees: req.body.windDirectionDegrees,
-      visibilityMiles: req.body.visibilityMiles,
-      flightCategory: req.body.flightCategory,
-      rawMetar: req.body.rawMetar
-    };
+  stationId: req.body.stationId,
+  assignedAirportId: req.body.assignedAirportId, // Captured from body
+  timestamp: req.body.timestamp || new Date().toISOString(),
+  temperatureCelsius: req.body.temperatureCelsius,
+  windSpeedKnots: req.body.windSpeedKnots,
+  windDirectionDegrees: req.body.windDirectionDegrees,
+  visibilityMiles: req.body.visibilityMiles,
+  flightCategory: req.body.flightCategory,
+  rawMetar: req.body.rawMetar
+};
+
 
     const response = await mongodb.getDatabase().db().collection('weather').insertOne(weatherReport);
     
@@ -88,6 +90,7 @@ const updateWeather = async (req, res) => {
     const weatherId = new ObjectId(req.params.id);
     const weatherReport = {
       stationId: req.body.stationId,
+      assignedAirportId: req.body.assignedAirportId,
       timestamp: req.body.timestamp,
       temperatureCelsius: req.body.temperatureCelsius,
       windSpeedKnots: req.body.windSpeedKnots,

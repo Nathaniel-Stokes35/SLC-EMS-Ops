@@ -16,8 +16,10 @@ describe('Weather Validation Middleware Unit Tests', () => {
   });
 
   test('should pass validation and call next() when weather payload is valid', () => {
+    // This complete object matches your new strict middleware rules perfectly
     mockRequest.body = {
       stationId: "KSLC",
+      assignedAirportId: "652f4c9c1b3d5e001f8a2b3c", // Added the required 24-character hexadecimal database ID string
       windSpeedKnots: 15,
       windDirectionDegrees: 240,
       visibilityMiles: 10,
@@ -31,7 +33,9 @@ describe('Weather Validation Middleware Unit Tests', () => {
   });
 
   test('should fail validation with 412 status when missing stationId', () => {
+    // This payload fails because stationId is completely omitted
     mockRequest.body = {
+      assignedAirportId: "652f4c9c1b3d5e001f8a2b3c", // Included so it passes the ID check but fails the missing stationId rule
       windSpeedKnots: 15,
       windDirectionDegrees: 240,
       visibilityMiles: 10,

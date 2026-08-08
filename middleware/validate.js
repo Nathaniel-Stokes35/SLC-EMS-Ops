@@ -50,7 +50,8 @@ const saveHelicopter = (req, res, next) => {
 const saveWeather = (req, res, next) => {
   const validationRules = {
     stationId: 'required|string|min:3|max:4',
-    timestamp: 'string', // Optional date string format
+    assignedAirportId: 'required|string|regex:/^[0-9a-fA-F]{24}$/', // Links directly to the airport collection ID
+    timestamp: 'string',
     temperatureCelsius: 'numeric',
     windSpeedKnots: 'required|integer|min:0',
     windDirectionDegrees: 'required|integer|min:0|max:360',
@@ -79,8 +80,9 @@ const savePilot = (req, res, next) => {
     lastName: 'required|string',
     status: 'required|string|in:On Duty,Off Duty,On Leave,Suspended',
     certifications: 'required|array',
-    medicalClassExpiration: 'required|string', // Date string format
-    totalFlightHours: 'required|integer|min:0'
+    medicalClassExpiration: 'required|string',
+    totalFlightHours: 'required|integer|min:0',
+    assignedHelicopterId: 'required|string|regex:/^[0-9a-fA-F]{24}$/' // Links directly to the helicopters collection ID
   };
 
   validator(req.body, validationRules, {}, (err, status) => {
