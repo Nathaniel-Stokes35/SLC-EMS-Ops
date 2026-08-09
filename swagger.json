@@ -5,9 +5,10 @@
     "description": "CSE 341 - Final Project.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "slc-ems-ops.onrender.com",
   "basePath": "/",
   "schemes": [
+    "https",
     "http"
   ],
   "paths": {
@@ -22,7 +23,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Airport Entries Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -47,7 +48,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Airport Entry Created"
           },
           "400": {
             "description": "Bad Request"
@@ -83,7 +84,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Airport Entry Found"
           },
           "400": {
             "description": "Bad Request"
@@ -120,7 +121,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Airport Entry Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -151,7 +152,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Airport Entry Deleted"
           },
           "400": {
             "description": "Bad Request"
@@ -201,7 +202,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Helicopter Created"
           },
           "400": {
             "description": "Bad Request"
@@ -237,7 +238,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Helicopter Found"
           },
           "400": {
             "description": "Bad Request"
@@ -274,7 +275,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Helicopter Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -305,7 +306,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Helicopter Deleted"
           },
           "400": {
             "description": "Bad Request"
@@ -355,7 +356,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Weather Report Created"
           },
           "400": {
             "description": "Bad Request"
@@ -391,7 +392,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Weather Report Found"
           },
           "400": {
             "description": "Bad Request"
@@ -428,7 +429,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Weather Report Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -459,7 +460,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Weather Report Deleted"
           },
           "400": {
             "description": "Bad Request"
@@ -484,7 +485,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Pilots found and reported"
           },
           "500": {
             "description": "Internal Server Error"
@@ -509,7 +510,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Pilot Entry Created"
           },
           "400": {
             "description": "Bad Request"
@@ -545,7 +546,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Pilot Found"
           },
           "400": {
             "description": "Bad Request"
@@ -582,7 +583,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Pilot Entry Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -613,7 +614,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Pilot Entry Deleted"
           },
           "400": {
             "description": "Bad Request"
