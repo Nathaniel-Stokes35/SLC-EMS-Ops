@@ -1,7 +1,5 @@
 const swaggerAutogen = require('swagger-autogen')();
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 const doc = {
   info: {
     title: 'SLC-EMS-Ops API',

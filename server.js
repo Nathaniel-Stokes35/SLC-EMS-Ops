@@ -12,14 +12,8 @@ const { MongoStore } = require('connect-mongo');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 // Middleware
 app.use(bodyParser.json());
-
-if (isProduction) {
-  app.set('trust proxy', 1);
-}
 
 // Sessions
 app.use(session({
@@ -34,8 +28,6 @@ app.use(session({
 
   cookie: {
     maxAge: 1000 * 60 * 60 * 24,
-    secure: isProduction,
-    sameSite: isProduction ? 'none' : 'lax'
   }
 }));
 
@@ -45,9 +37,7 @@ app.use(passport.session());
 
 // CORS
 app.use(cors({
-  origin: isProduction
-    ? 'https://slc-ems-ops.onrender.com'
-    : 'http://localhost:3000',
+  origin: 'https://slc-ems-ops.onrender.com',
 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   credentials: true
