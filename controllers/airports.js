@@ -11,7 +11,7 @@ const getAllAirports = async (req, res) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
     } else {
-      res.status(500).json({ message: 'Some error occurred while retrieving airports.' });
+      res.status(500).json({ message: 'There was an error while retrieving airports.' });
     }
   } catch (err) {
     res.status(500).json({ message: err.message || 'Internal Server Error while retrieving airports.' });
